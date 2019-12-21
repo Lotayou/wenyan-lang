@@ -124,7 +124,8 @@ function cmdlinecode() {
         errorCallback: function(x) {
           console.error(x);
           global.haserr = true;
-        }
+        },
+        lib: STDLIB
       });
       if (global.haserr) {
         // console.log("Not evaulated.")
@@ -187,7 +188,8 @@ function cmdlinecode() {
       errorCallback: function(x) {
         console.error(x);
         process.exit();
-      }
+      },
+      lib: STDLIB
     });
     if (args["--output"] == ".") {
       if (files.length == 0) {
@@ -284,6 +286,7 @@ try {
   exe += `#!${nodepath}\n`;
 } catch (e) {}
 exe += utils.catsrc();
+exe += "var STDLIB=" + JSON.stringify(utils.loadlib()) + ";";
 exe +=
   "\n" +
   cmdlinecode.toString() +
