@@ -11,27 +11,35 @@ function remotelib(urls) {
 
 function catsrc() {
   var s = "";
-  var srcs = fs.readdirSync("../src/");
+  var rootPath = "../src/";
+  var compilerPath = "../src/compiler/";
+  var compilerList = ["base", "js", "py", "rb", "compilers"];
+  // Must make sure compilers.js in the end.
+  compilerList.push("compilers");
+  compilerList = compilerList.map(filename => compilerPath + filename + ".js");
+  var srcs = fs.readdirSync(rootPath).map(filename => rootPath + filename);
+  srcs = srcs.concat(compilerList);
+
   for (var i = 0; i < srcs.length; i++) {
     if (srcs[i].endsWith(".js") && !srcs[i].includes("cli")) {
       s +=
         fs
-          .readFileSync("../src/" + srcs[i])
+          .readFileSync(srcs[i])
           .toString()
-          .replace(/const/g, "var") + ";\n";
+          .replace(/const\s/g, "var ") + ";\n";
     }
   }
   return s;
 }
 
-function loadlib() {
+function loadlib(pth = "../lib/") {
   var lib = {};
-  var srcs = fs.readdirSync("../lib/");
+  var srcs = fs.readdirSync(pth);
   for (var i = 0; i < srcs.length; i++) {
     if (srcs[i].endsWith(".wy")) {
-      lib[srcs[i].split(".")[0]] = fs
-        .readFileSync("../lib/" + srcs[i])
-        .toString();
+      lib[srcs[i].split(".")[0]] = fs.readFileSync(pth + srcs[i]).toString();
+    } else if (fs.lstatSync(pth + srcs[i]).isDirectory()) {
+      lib[srcs[i]] = loadlib((path = pth + srcs[i] + "/"));
     }
   }
   return lib;
