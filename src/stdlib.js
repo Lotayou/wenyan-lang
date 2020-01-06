@@ -1,22 +1,24 @@
-try {
-  function loadStdlib() {
-    const STDLIB = {};
+/* wenyan-catsrc-ignore */
 
+function loadStdlib() {
+  const STDLIB = {};
+
+  try {
     const raw = require.context("../lib", true, /.*\.wy$/);
 
     raw.keys().forEach(key => {
       const parts = key.slice(2, -3).split("/");
       const data = raw(key).default;
-      let lib = STDLIB;
+      let sublib = STDLIB;
       for (const part of parts.slice(0, -1)) {
-        if (!lib[part]) lib[part] = {};
-        lib = lib[part];
+        if (!sublib[part]) sublib[part] = {};
+        sublib = sublib[part];
       }
-      lib[parts[parts.length - 1]] = data;
+      sublib[parts[parts.length - 1]] = data;
     });
+  } catch (e) {} // ignore "require.context" error for testing
 
-    return STDLIB;
-  }
+  return STDLIB;
+}
 
-  module.exports = loadStdlib();
-} catch (e) {}
+module.exports = loadStdlib();

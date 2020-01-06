@@ -2,6 +2,9 @@
 
 # 文言 wenyan-lang
 
+[![npm](https://img.shields.io/npm/v/@wenyanlang/core)](https://www.npmjs.com/package/@wenyanlang/core)
+[![build](https://img.shields.io/github/workflow/status/LingDong-/wenyan-lang/Build%20%26%20Test)](https://github.com/LingDong-/wenyan-lang/actions)
+
 [http://wenyan-lang.lingdong.works](http://wenyan-lang.lingdong.works)
 
 English | [简体中文](./README.zh-Hans.md) | [繁体中文](./README.zh-Hant.md)
@@ -89,11 +92,21 @@ wenyan examples/helloworld.wy
 
 You can now translate JavaScript to wenyan-lang using the [wenyanizer](https://github.com/zxch3n/wenyanizer) by [zxch3n](https://github.com/zxch3n).
 
+### 3rd Party Compilers
+
+- [JVM compiler](https://github.com/MagicLu550/wenyan-lang_jvm) by [MagicLu550](https://github.com/MagicLu550)
+
 ### Text Editor Plugins
 
 - [Plugin for VSCode](https://github.com/antfu/wenyan-lang-vscode) by [antfu](https://github.com/antfu)
 - [Plugin for Vim](https://github.com/voldikss/vim-wenyan) by [voldikss](https://github.com/voldikss)
 - [Plugin for Sublime Text](https://github.com/absop/SublimeWenyan) by [absop](https://github.com/absop)
+
+### Browser Runtime
+
+You can now run Wenyan scripts right in your html file.
+
+Please refer to [Browser Runtime](./documentation/Runtime.md)
 
 ### Advance Usage
 
@@ -201,9 +214,11 @@ Arrays are 1-indexed.
 
 ### Advance Features
 
+- [Standard Library](./documentation/Standard-Lib.md)
 - [Try...Catch](./documentation/Try-Catch.md)
 - [Nested Function Calls](./documentation/Nested-Function-Calls.md)
-- [Importing and Standard Library](./documentation/Importing.md)
+- [Importing](./documentation/Importing.md)
+- [Macros](./documentation/Macros.md)
 
 ## Renderer
 
@@ -230,14 +245,14 @@ Before opening an Issue, please check if it belongs to the below categories:
 |Standard library ([Math](https://github.com/LingDong-/wenyan-lang/issues/55)/[Bitwise ops](https://github.com/LingDong-/wenyan-lang/issues/2)/[Random](https://github.com/LingDong-/wenyan-lang/issues/87)) |  ***** | √ | In progress |
 |[Test suite](https://github.com/LingDong-/wenyan-lang/issues/38)|  **** | √  | In progress |
 |[Switch statements](https://github.com/LingDong-/wenyan-lang/issues/53)|  *** | |
-|[Functional programming](https://github.com/LingDong-/wenyan-lang/issues/99) |  *** | |
+|[Functional programming](https://github.com/LingDong-/wenyan-lang/issues/99) |  *** | | Currying; Hi.-Ord. functions supported |
 |Stricter compiler |  **** | |
 |Compiler for other languages |  ** | √ |
 |[Plugins for editors](https://github.com/LingDong-/wenyan-lang/issues/77) |  ** | √ | VSCode, Vim, Sublime added |
 |Convert [js](https://github.com/LingDong-/wenyan-lang/issues/47)/[py](https://github.com/LingDong-/wenyan-lang/issues/67)/[anything](https://github.com/LingDong-/wenyan-lang/issues/73) back to wenyan |  * | √ |
 |[Escaping](https://github.com/LingDong-/wenyan-lang/issues/84)/[generating](https://github.com/LingDong-/wenyan-lang/issues/128) special characters |  *** | |
-|[Alternative syntax for 「「」」](https://github.com/LingDong-/wenyan-lang/issues/81)|  ** | |
-|[Alternative symbols for 。](https://github.com/LingDong-/wenyan-lang/issues/93)|  ** | |
+|[Alternative syntax for 「「」」](https://github.com/LingDong-/wenyan-lang/issues/81)|  ** | | `『』` supported |
+|[Alternative symbols for 。](https://github.com/LingDong-/wenyan-lang/issues/93)|  ** | | `、`supported |
 |Online IDE [fonts](https://github.com/LingDong-/wenyan-lang/issues/5) and [vertical text](https://github.com/LingDong-/wenyan-lang/issues/9) |  ** | |
 |[Rendering comment as small inline text](https://github.com/LingDong-/wenyan-lang/issues/148) | ** | |
 |More examples | ** | √ |
@@ -250,3 +265,5 @@ If you could help implement a feature with a `√` under `help needed`, please f
 |---|---|---|---|
 |[hanzi2num conversion error](https://github.com/LingDong-/wenyan-lang/issues/114)|  ***** | | |
 |[hanzi2num multi-character numbers not included](https://github.com/LingDong-/wenyan-lang/issues/130) |  *** | | |
+
+

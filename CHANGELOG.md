@@ -1,3 +1,115 @@
+# v0.2.1
+
+## Static Type Inference
+
+When the option is turned on, the compiler will now raise exceptions if your code does not typecheck. Also it is capable of producing type signatures for inspection, e.g. ./example/quicksort.wy produces the following:
+
+```
+[0-347] {
+  快排 : (('a) arr) -> (('a) arr)
+  己 : (num) arr
+  [33-285] {
+    首 : ('a) arr
+    頷 : ('a) arr
+    尾 : ('a) arr
+    甲一 : 'a
+    甲餘 : ('a) arr
+    乙 : ('a) arr
+    [136-201] {
+      丁 : 'a
+    }
+  }
+}
+```
+
+For more detail, please refer to #486 
+
+### Standard Library
+
+- Fundamental Calendar library (PR #466, thanks @statementreply), check out [Standard Library cheatsheet](https://github.com/LingDong-/wenyan-lang/blob/master/documentation/Standard-Lib.md) for more details.
+
+### 3rd Party Compilers
+
+- [JVM compiler](https://github.com/MagicLu550/wenyan-lang_jvm) by [MagicLu550](https://github.com/MagicLu550)
+
+### Fixes
+
+- Stdlib was not bundled correctly. (PR #481, thanks @antfu)
+
+
+# v0.2.0
+
+## ⚠ BREAKING CHANGE: `compile` API change
+The first argument lang move to option, please switch to new API.
+
+```js
+//before
+compile('js', source, { ... })
+// after
+compile(source, { lang: 'js', ... })
+```
+
+The old API is still functional for temporary backward compatible, the support **will be REMOVED in the next minor update.**
+
+## Wenyan Snippets Site, #459
+
+Please do check it out. Any feedbacks are welcome!
+
+![](https://user-images.githubusercontent.com/7929704/71650125-049f4800-2ce2-11ea-9f44-31c9b7e626d7.png)
+
+## New Execute API
+Check out [API Document](https://github.com/LingDong-/wenyan-lang/blob/master/documentation/Compiler-API.md) and #473
+
+
+### Fixes
+- Fix compiler crash with 0-argument macros (PR #453, thanks @statementreply)
+- stdlib: Improve sin, cos and tan (^/1/3) (PR #457, thanks @statementreply)
+- bool2hanzi (PR #465, thanks @Fros1er)
+
+### Docs
+- Auto generates examples for README.md (PR #448, thanks @cuixiping)
+
+
+# v0.1.3
+
+## Macros (Experimental)
+
+As you might (not) have noticed, *wenyan-lang* strives to be more readable (for ancient Chinese people). **Macros** provide syntactic sugars to bring the 文采 of your code to the next level.
+
+E.g. Now you can patch wenyan-lang's notorius print function like so:
+
+```
+或云「「書「甲」焉」」。
+蓋謂「「吾有一言。曰「甲」。書之」」。
+
+書「「問天地好在」」焉。
+```
+
+Since we're beating JavaScript to macros, here is a rough C equivalence:
+
+```
+#define   書(甲)焉   吾有一言。曰甲。書之
+書("問天地好在")焉。
+```
+
+See [**Full Documation**](https://github.com/LingDong-/wenyan-lang/blob/master/documentation/Macros.md), #440 for more details.
+
+### Standard Library
+A new standard library `畫譜` that manipulates canvas on web pages. Check out the demo on Online IDE!
+
+### Browser Runtime
+New package [`@wenyanlang/runtime`](https://github.com/LingDong-/wenyan-lang/blob/master/documentation/Runtime.md) allowing you to run Wenyan direct in `<script>` tag of html! (PR #433, thanks @antfu)
+
+### Docs
+- [**Standard library document**](https://github.com/LingDong-/wenyan-lang/blob/master/documentation/Standard-Lib.md) added. (PR #432, thanks @antfu @statementreply)
+
+### Examples
+- New example 劉徽割圓術 (PR #431, thanks @cuixiping)
+
+### Testing
+- More testing cases for hanzi2num added (PR #442, thanks @kaiyuan01)
+
+
 # v0.1.2
 
 ## Overhauled `hanzi2num` (PR #413, thanks [@statementreply](https://github.com/statementreply))

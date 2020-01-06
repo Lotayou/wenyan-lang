@@ -13,6 +13,7 @@ var KEYWORDS_DEFINE = {
   術: ["type", "fun"],
   爻: ["type", "bol"],
   物: ["type", "obj"],
+  量: ["type", "any"],
   書之: ["print"],
   名之曰: ["name"],
   施: ["call", "r"],
@@ -95,6 +96,9 @@ var KEYWORDS_DEFINE = {
   之禍歟: ["try", "catcherr1"],
   不知何禍歟: ["try", "catchall"],
   乃作罷: ["try", "end"],
+
+  或云: ["macro", "from"],
+  蓋謂: ["macro", "to"],
 
   注曰: ["comment"],
   疏曰: ["comment"],
